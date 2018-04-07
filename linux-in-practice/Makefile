@@ -1,2 +1,2 @@
 $(TARGET): $(TARGET).c
-	gcc -o $(TARGET) $<
+	gcc -ggdb -o $(TARGET) $<
