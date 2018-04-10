@@ -4,20 +4,17 @@ int main(void)
 {
 	int N;
 	int answer = 0;
-	int num[100000];
+	int num[3] = {0};
+	int tmp;
 	scanf("%d", &N);
 
 	for (int i = 0; i < N; i++) {
-		scanf("%d", &num[i]);
+		scanf("%d", &tmp);
+		num[(tmp % 3)]++;
 	}
 
-	for (int i = 0; i < N; i++) {
-		for (int j = i + 1; j < N; j++) {
-			if (((num[i] + num[j]) % 3) == 0) {
-				answer++;
-			}
-		}
-	}
+	answer = num[0] * (num[0] - 1) / 2;
+	answer += num[1] * num[2];
 
 	printf("%d", answer);
 	return 0;
