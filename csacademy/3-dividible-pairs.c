@@ -3,7 +3,7 @@
 int main(void)
 {
 	int N;
-	int answer = 0;
+	long answer = 0;
 	int num[3] = {0};
 	int tmp;
 	scanf("%d", &N);
@@ -13,9 +13,9 @@ int main(void)
 		num[(tmp % 3)]++;
 	}
 
-	answer = num[0] * (num[0] - 1) / 2;
 	answer += num[1] * num[2];
+	answer += num[0] * (num[0] - 1) / 2;
 
-	printf("%d", answer);
+	printf("%ld", answer);
 	return 0;
 }
