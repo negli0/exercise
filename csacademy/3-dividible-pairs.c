@@ -13,7 +13,7 @@ int main(void)
 		num[(tmp % 3)]++;
 	}
 
-	answer += num[1] * num[2];
+	answer = num[1] * num[2];
 	answer += num[0] * (num[0] - 1) / 2;
 
 	printf("%ld", answer);
