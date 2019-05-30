@@ -2,17 +2,19 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 )
 
 var result = map[int]string{}
 var resInd int
 var tar string
+var end = false
 
-func min(r []rune) []rune {
+func max(r []rune) []rune {
 	for i := 0; i < len(r)-1; i++ {
 		for j := i + 1; j < len(r); j++ {
-			if r[i] > r[j] {
+			if r[i] < r[j] {
 				r[i], r[j] = r[j], r[i]
 			}
 		}
@@ -21,8 +23,18 @@ func min(r []rune) []rune {
 }
 
 func genPerm(done string, rest string) {
+	if end == true {
+		return
+	}
 	if len(rest) == 1 {
 		result[resInd] = done + rest
+		champ, _ := strconv.Atoi(tar)
+		chall, _ := strconv.Atoi(result[resInd])
+		if chall <= champ {
+			fmt.Println(chall)
+			end = true
+			os.Exit(0)
+		}
 		resInd++
 		return
 	}
@@ -50,12 +62,13 @@ func main() {
 	var a, b string
 	fmt.Scanf("%s%s", &a, &b)
 
+	tar = b
 	ra := []rune(a)
-	sra := min(ra)
+	sra := max(ra)
 
 	ret := solve(string(sra), b)
-	// for i := 0; i < resInd; i++ {
-	// 	fmt.Println(result[i])
-	// }
+	//for i := 0; i < resInd; i++ {
+	//	fmt.Println(result[i])
+	//}
 	fmt.Println(ret)
 }
